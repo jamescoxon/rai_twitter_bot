@@ -28,9 +28,7 @@ def wallet_com(data):
 
 api = twitter.Api(settings.consumer_key, settings.consumer_secret, settings.access_token_key, settings.access_token_secret)
 
-#******** This is where you set the main tweet *********
-status = api.PostUpdate('Test2')
-#******** *********
+status = api.PostUpdate(settings.actual_tweet)
 
 print(status)
 json_status = json.loads(str(status))

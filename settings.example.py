@@ -15,3 +15,7 @@ access_token_secret='<token_secret>'
 
 num_retweets = 2 #number of retweets before the bot stops
 volume = 1 #this is how many mrai to give for each retweet
+
+# Tweet
+
+actual_tweet = 'Test tweet #raiblocks'
