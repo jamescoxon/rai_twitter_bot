@@ -19,3 +19,8 @@ volume = 1 #this is how many mrai to give for each retweet
 # Tweet
 
 actual_tweet = 'Test tweet #raiblocks'
+
+#Follow old tweet
+#To post a new tweet (not follow an old tweet) set this to 0
+#old_tweet = 864361101470740481
+old_tweet = 0
