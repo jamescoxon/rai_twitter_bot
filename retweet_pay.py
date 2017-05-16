@@ -28,12 +28,18 @@ def wallet_com(data):
 
 api = twitter.Api(settings.consumer_key, settings.consumer_secret, settings.access_token_key, settings.access_token_secret)
 
-status = api.PostUpdate(settings.actual_tweet)
+if settings.old_tweet == 0:
+	status = api.PostUpdate(settings.actual_tweet)
 
-print(status)
-json_status = json.loads(str(status))
-print(json_status['id'])
-giveaway_id = int(json_status['id'])
+	print(status)
+	json_status = json.loads(str(status))
+	print(json_status['id'])
+	giveaway_id = int(json_status['id'])
+
+else:
+	giveaway_id = settings.old_tweet
+
+print(giveaway_id)
 
 total_giveaway = settings.num_retweets
 payout_volume = settings.volume
@@ -72,6 +78,13 @@ while x < total_giveaway:
 					#Update x so that eventually this while loop will end
 					x = x + 1
 					print(x)
+					#payout_volume = payout_volume - 1
+
+					#Send a DM with result
+					reply_message = "Thanks for retweeting! Here is %iMrai https://raiblockscommunity.net/block/index.php?h=%s" % (payout_volume, str(parsed_json['block']))
+					print(reply_message)
+					data = api.PostDirectMessage(reply_message, screen_name=retweet_user)
+					#print(data)
 			#else:
 				#TODO
 				#send a DM suggesting that if they want a payout next time to add their
